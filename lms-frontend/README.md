@@ -26,3 +26,27 @@ npm i
 npm run dev
 
 ```
+5.  Add the tailwind file in Index.css file
+
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+````
+
+### Adding and Plugins in dependnecies
+
+```
+npm install @reduxjs/toolkit react-redux react-router-dom react-icons react-chartjs-2 chart.js daisyui axios react-hot-toast @tailwindcss/line-clamp
+
+```
+
+### Adding auto import sort for esline
+
+1. install the plugin
+
+```
+npm i eslint-plugin-simple-import-sort
+
+```
