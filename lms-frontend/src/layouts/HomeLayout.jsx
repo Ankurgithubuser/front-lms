@@ -1,19 +1,28 @@
 import {FiMenu} from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux'; 
 import {AiFillCloseCircle} from 'react-icons/ai';
 import Footer from "../components/Footer";
 function HomeLayout({children}) {
+        
+    const dispatch= useDispatch();
+    const navigate = useNavigate();
+        
+
+    const isLoggedIn = useSelector((state)=>state?.auth.isLoggedIn)
+    const role = useSelector((state)=>state?.auth?.role)
+    
 
     function changeWidth(){
         const drawerSide = document.getElementsByClassName("drawer-side")
         drawerSide[0].style.width ='auto';
     }
     function hideDrawer(){
-            const hideDrawer =document.getElementsByClassName("drawer-toggle")
-            hideDrawer[0].checked = false;
+            const element =document.getElementsByClassName("drawer-toggle")
+            element[0].checked = false;
 
             const drawerSide = document.getElementsByClassName("drawer-side")
-            drawerSide[0].style.width =0;
+            drawerSide[0].style.width ='0';
     }
     return(
         <div className="min-h-[90vh]">
@@ -40,6 +49,13 @@ function HomeLayout({children}) {
                         </Link>
                     </li>
                     <li>
+                    
+                        {isLoggedIn && role === "ADMIN" && (
+                            <li>
+                                <Link to="/admin/dasboard">Admin Dasboard</Link>
+                            </li>
+                        )}
+                    
                         <Link to ="/about">
                       About us
                         </Link>
@@ -54,6 +70,31 @@ function HomeLayout({children}) {
                      All courses
                         </Link>
                     </li>
+                
+                    {!isLoggedIn ?  (
+                        <li className='bottom-4 absolute w-[90%]'>
+                            <div className='w-full flex items-center justify-center'>
+                                <button className=' bg-red-400  text-white px-4 py-1 font-semibold rounded-md w-full'>
+                                    <Link to= "/login">Login</Link>
+                                </button>
+                                <button className=' bg-green-400 text-white px-4 py-1 font-semibold rounded-md w-full'>
+                                    <Link to= "/signup">SignUp</Link>
+                                </button>
+                            </div>
+                        </li>
+                    ) :(
+                        <li className='bottom-4 absolute w-[90%]'>
+                            <div className='w-full flex items-center justify-center'>
+                                <button className='bg-red-400 text-white  px-4 py-1 font-semibold rounded-md w-full'>
+                                    <Link to= "/user/profile">Profile</Link>
+                                </button>
+                                <button className='bg-green-400 text-white px-4 py-1 font-semibold rounded-md w-full'>
+                                    <Link to="LogOut">Logout</Link>
+                                </button>
+                            </div>
+                        </li>
+                    )
+                    }
                 </ul>
             </div>
 
