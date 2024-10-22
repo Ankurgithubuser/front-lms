@@ -1,14 +1,16 @@
 import './App.css'
+import Home from './pages/Home'
+import {Route,Routes} from 'react-router-dom'
 
 function App() {
 
 
 
   return (
-  <h1 className="text-3xl font-bold  underline">
-    Hello Ananya
-  </h1>
+ <Routes>
+  <Route path='/' element={<Home/>}/>
+ </Routes>
   )
 }
 
-export default App
+export default App;
