@@ -24,6 +24,11 @@ function HomeLayout({children}) {
             const drawerSide = document.getElementsByClassName("drawer-side")
             drawerSide[0].style.width ='0';
     }
+    function onLogOut(e) {
+        e.preventDefault();
+        navigate("/");
+        
+    }
     return(
         <div className="min-h-[90vh]">
              <div className="drawer absolute left-0 z-50 w-full">
@@ -36,7 +41,7 @@ function HomeLayout({children}) {
                            </div>
             <div className="drawer-side w-0">
                 <label htmlFor="my-drawer " className="drawer-overlay"></label>
-                <ul className="menu p-4 w-48 sm:w-80 bg-base-200 text-base-content relative ">
+                <ul className="menu p-4 w-48 sm:w-80 h-[100%] bg-base-200 text-base-content relative ">
                     
                     <li className='w-fit absolute right-2 z-50'>
                        <button onClick={hideDrawer}>
@@ -89,7 +94,7 @@ function HomeLayout({children}) {
                                     <Link to= "/user/profile">Profile</Link>
                                 </button>
                                 <button className='bg-green-400 text-white px-4 py-1 font-semibold rounded-md w-full'>
-                                    <Link to="LogOut">Logout</Link>
+                                    <Link onClick={onLogOut}>Logout</Link>
                                 </button>
                             </div>
                         </li>
