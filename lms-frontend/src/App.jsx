@@ -5,10 +5,9 @@ import Notfound from './pages/Notfound';
 import {Route,Routes} from 'react-router-dom'
 import Signup from './pages/Signup';
 import Signin from './pages/Signin'
+import Contact from './pages/contact';
 
 function App() {
-
-
 
   return (
  <Routes>
@@ -16,6 +15,8 @@ function App() {
   <Route path='/about' element={<Aboutus/>}/>
   <Route path='*' element={<Notfound/>}/>
   <Route path='/signup' element={<Signup/>}/>
+  <Route path='/contacts' element={<Contact/>}/>
+
   <Route path='/signin' element={<Signin/>}/>
 
  </Routes>

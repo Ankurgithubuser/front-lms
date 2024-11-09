@@ -5,7 +5,7 @@ import courseReducer from './slices/courseSlice'
 const store = configureStore ({
     reducer : {
         auth:authReducer,
-        course:authReducer
+        course:courseReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}),
     devTools: true
