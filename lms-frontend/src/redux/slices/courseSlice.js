@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import toast from "react-hot-toast";
-
 import axiosInstance from "../../config/axiosInstance";
+
 const initialState = {
     courseList: []
 }
@@ -46,7 +46,6 @@ export const createNewCourse = createAsyncThunk("/course/create", async (data) =
         toast.error(error?.response?.data?.message);
     }
 })
-
 
 
 
